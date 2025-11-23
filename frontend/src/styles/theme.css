@@ -1,0 +1,44 @@
+:root {
+  /* Brand Colors */
+  --color-primary: #8b5cf6;
+  --color-primary-hover: #7c3aed;
+  --color-primary-dark: #6d28d9;
+  --color-secondary: #22d3ee;
+
+  /* Background Colors */
+  --color-bg-main: #0a0a0f;
+  --color-bg-card: #16161f;
+  --color-bg-card-hover: #1a1535;
+  --color-bg-input: #1a1825;
+  --color-bg-element: #2d2b3b;
+  --color-bg-element-hover: #3f3d4e;
+  --color-bg-option: #232130;
+
+  /* Border Colors */
+  --color-border: #1e1e2e;
+  --color-border-light: #2d2b3b;
+  --color-border-focus: #8b5cf6;
+
+  /* Text Colors */
+  --color-text-main: #ffffff;
+  --color-text-secondary: #a0a0b0;
+  --color-text-muted: #d1d5db;
+  --color-text-inverse: #000000;
+
+  /* Status Colors */
+  --color-success: #22c55e;
+  --color-success-bg: rgba(34, 197, 94, 0.1);
+  --color-success-bg-light: rgba(34, 197, 94, 0.05);
+  
+  --color-error: #ef4444;
+  --color-error-bg: rgba(239, 68, 68, 0.1);
+  --color-error-bg-light: rgba(239, 68, 68, 0.05);
+  
+  --color-warning: #ffd700;
+  --color-warning-bg: #2d2d00;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  --gradient-progress: linear-gradient(90deg, #8b5cf6, #22d3ee);
+  --gradient-card: linear-gradient(145deg, rgba(22, 22, 31, 0.6) 0%, rgba(22, 22, 31, 0.9) 100%); /* Example gradient if needed, or keep existing logic */
+}

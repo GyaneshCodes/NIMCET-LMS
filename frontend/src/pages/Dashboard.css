@@ -1,0 +1,230 @@
+/* Dashboard.css */
+/* :root variables moved to src/styles/theme.css */
+
+body {
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.dashboard-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background-color: var(--color-bg-main);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.nav-links a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  margin: 0 16px;
+  font-weight: 600;
+}
+
+.nav-links a.active {
+  color: var(--color-text-main);
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.streak {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Welcome Banner */
+.welcome-banner {
+  background-color: var(--color-bg-card);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 32px;
+  border: 1px solid var(--color-border);
+}
+
+.welcome-banner h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.welcome-banner p {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* Achievements Section */
+.achievements-section {
+  background-color: var(--color-bg-card);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 32px;
+  border: 1px solid var(--color-border);
+}
+
+.achievements-section h2 {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.badges-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 16px;
+}
+
+.badge {
+  background-color: var(--color-bg-input);
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 160px;
+  text-align: center;
+}
+
+.badge-icon {
+  font-size: 32px;
+  color: var(--color-text-secondary); /* Assuming icon color was meant to be secondary or primary? Original used var(--icon-color) which wasn't defined in root! Let's use secondary text or primary color */
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+/* Module Grid */
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.module-card {
+  background-color: var(--color-bg-card-hover);
+  border: 2px solid var(--color-border);
+  border-radius: 16px;
+  padding: 40px;
+  /* background-image: var(--gradient);  --gradient was not defined in root either! */
+  transition: all 0.3s ease;
+}
+
+.module-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2);
+  border-color: var(--color-primary);
+}
+
+.module-icon {
+  font-size: 40px;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.module-card h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.module-card p {
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: var(--color-bg-element);
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+
+.progress {
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: 4px;
+}
+
+.launch-button {
+  background-color: var(--color-secondary);
+  color: var(--color-text-inverse);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.launch-button:hover {
+  transform: scale(1.02);
+}
+
+/* Explore Button */
+.explore-button {
+  background-color: var(--color-primary);
+  color: var(--color-text-main);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 16px 48px;
+  border-radius: 12px;
+  border: none;
+  margin: 0 auto;
+  display: block;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.explore-button:hover {
+  background-color: var(--color-primary-hover);
+  transform: scale(1.02);
+}

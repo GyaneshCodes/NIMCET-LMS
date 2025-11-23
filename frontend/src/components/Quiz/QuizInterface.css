@@ -1,0 +1,214 @@
+.quiz-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: var(--color-bg-input);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  color: var(--color-text-main);
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.progress-section {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.progress-text {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+}
+
+.progress-bar-container {
+  height: 6px;
+  background-color: var(--color-bg-element);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--gradient-progress);
+  transition: width 0.3s ease;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg-element);
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin-right: 16px;
+}
+
+.timer.warning {
+  color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.quiz-close-button {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0 8px;
+  transition: color 0.2s;
+}
+
+.quiz-close-button:hover {
+  color: var(--color-text-main);
+}
+
+.question-card {
+  margin-bottom: 30px;
+}
+
+.question-text {
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.question-number {
+  color: var(--color-primary);
+  margin-right: 12px;
+  font-weight: 700;
+}
+
+.answer-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.answer-option {
+  background-color: var(--color-bg-option);
+  border: 2px solid var(--color-border-light);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.answer-option:hover:not(.selected):not(.correct):not(.incorrect) {
+  background-color: var(--color-bg-element);
+  transform: translateX(4px);
+}
+
+.answer-option.selected {
+  border-color: var(--color-primary);
+  background-color: rgba(139, 92, 246, 0.1); /* Keeping rgba for transparency, or could define var */
+}
+
+.answer-option.correct {
+  border-color: var(--color-success);
+  background-color: var(--color-success-bg);
+}
+
+.answer-option.incorrect {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.option-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.option-label {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-element);
+  border-radius: 8px;
+  font-weight: 600;
+  margin-right: 16px;
+  color: var(--color-text-secondary);
+}
+
+.answer-option.selected .option-label {
+  background-color: var(--color-primary);
+  color: var(--color-text-main);
+}
+
+.answer-option.correct .option-label {
+  background-color: var(--color-success);
+  color: var(--color-text-main);
+}
+
+.answer-option.incorrect .option-label {
+  background-color: var(--color-error);
+  color: var(--color-text-main);
+}
+
+.option-value {
+  flex: 1;
+  font-size: 16px;
+}
+
+.option-icon {
+  font-size: 20px;
+}
+
+.option-icon.correct {
+  color: var(--color-success);
+}
+
+.option-icon.incorrect {
+  color: var(--color-error);
+}
+
+.explanation-text {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.next-button {
+  margin-top: 30px;
+  width: 100%;
+  padding: 16px;
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: 12px;
+  color: var(--color-text-main);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.next-button:hover {
+  transform: translateY(-2px);
+}
+
+.quiz-loading, .quiz-error {
+  text-align: center;
+  padding: 40px;
+  color: var(--color-text-secondary);
+  font-size: 18px;
+}
+
+.quiz-error {
+  color: var(--color-error);
+}
