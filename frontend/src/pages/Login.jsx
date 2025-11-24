@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import "./Auth.css";
 
 const Login = () => {
@@ -35,9 +36,11 @@ const Login = () => {
 
       // Assuming the backend sets cookies, we just redirect
       console.log("Login successful:", data);
+      toast.success("Login successful!");
       navigate("/dashboard");
     } catch (err) {
       setError(err.message);
+      toast.error(err.message || "Login failed");
     }
   };
 

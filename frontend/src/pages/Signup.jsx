@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import "./Auth.css";
 
 const Signup = () => {
@@ -35,10 +36,12 @@ const Signup = () => {
         throw new Error(data.message || "Registration failed");
       }
 
-      console.log("Registration successful:", data);
+      console.log("Signup successful:", data);
+      toast.success("Account created successfully! Please login.");
       navigate("/login");
     } catch (err) {
       setError(err.message);
+      toast.error(err.message || "Signup failed");
     }
   };
 
