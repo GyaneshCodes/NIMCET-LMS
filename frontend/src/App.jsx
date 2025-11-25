@@ -8,25 +8,29 @@ import Signup from "./pages/Signup.jsx";
 import Profile from "./pages/Profile.jsx";
 import Analytics from "./pages/Analytics.jsx";
 import { Toaster } from "react-hot-toast";
+import { AuthProvider } from "./context/AuthContext.jsx";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/analytics" element={<Analytics />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
-      <Toaster position="top-right" toastOptions={{
-        style: {
-          background: '#333',
-          color: '#fff',
-        },
-      }} />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/practice/topic" element={<Dashboard />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+        <Toaster position="top-right" toastOptions={{
+          style: {
+            background: '#333',
+            color: '#fff',
+          },
+        }} />
+      </Router>
+    </AuthProvider>
   );
 }
 

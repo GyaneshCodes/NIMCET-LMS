@@ -61,7 +61,7 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new ApiError(400, "All fields are required");
   }
 
-  const existingUser = await User.findOne({ username });
+  const existingUser = await User.findOne({ username: username.toLowerCase() });
 
   if (!existingUser) {
     throw new ApiError(401, "user does not exist");

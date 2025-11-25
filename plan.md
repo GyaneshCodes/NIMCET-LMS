@@ -11,7 +11,7 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
 **Goal:** Build a working quiz system without authentication
 **Timeline Estimate:** 2-3 weeks
 
-### Step 1.1: Environment Setup (Day 1-2)
+### Step 1.1: Environment Setup 
 - [ ] Install Node.js and MongoDB
 - [ ] Set up project structure (separate frontend and backend folders)
 - [ ] Initialize npm projects for both frontend and backend
@@ -21,7 +21,7 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
 - [ ] Set up MongoDB connection
 - [ ] Test basic server-client communication
 
-### Step 1.2: Database Setup (Day 3-4)
+### Step 1.2: Database Setup 
 - [ ] Create MongoDB database named "nimcet_platform"
 - [ ] Design Topics collection schema in Mongoose
 - [ ] Design Questions collection schema in Mongoose
@@ -30,21 +30,21 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
   - Add 20-30 sample questions across topics
 - [ ] Test database queries manually
 
-### Step 1.3: Backend API - Topics (Day 5-6)
+### Step 1.3: Backend API - Topics 
 - [ ] Create Express routes for topics
   - GET /api/topics - Fetch all topics
   - GET /api/topics/:id - Fetch single topic
 - [ ] Test API endpoints using Postman
 - [ ] Handle errors gracefully
 
-### Step 1.4: Backend API - Questions (Day 7-9)
+### Step 1.4: Backend API - Questions 
 - [ ] Create Express routes for questions
   - GET /api/questions/topic/:topicId - Get questions by topic
   - GET /api/questions/:id - Get single question
 - [ ] Implement logic to randomly select N questions from a topic
 - [ ] Test API endpoints thoroughly
 
-### Step 1.5: Frontend - Basic Structure (Day 10-11)
+### Step 1.5: Frontend - Basic Structure
 - [ ] Set up React routing
 - [ ] Create basic layout components (Header, Footer)
 - [ ] Create pages:
@@ -53,13 +53,13 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
   - Quiz page
   - Results page
 
-### Step 1.6: Frontend - Topic Selection (Day 12-13)
+### Step 1.6: Frontend - Topic Selection
 - [ ] Fetch and display available topics from API
 - [ ] Design topic cards with subject information
 - [ ] Implement topic selection functionality
 - [ ] Add basic styling (CSS or Tailwind)
 
-### Step 1.7: Frontend - Quiz Interface (Day 14-16)
+### Step 1.7: Frontend - Quiz Interface
 - [ ] Fetch questions based on selected topic
 - [ ] Display questions one at a time or all at once (decide based on UX preference)
 - [ ] Implement option selection UI
@@ -67,7 +67,7 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
 - [ ] Add timer functionality (optional for Phase 1)
 - [ ] Implement submit quiz functionality
 
-### Step 1.8: Frontend - Results Display (Day 17-18)
+### Step 1.8: Frontend - Results Display
 - [ ] Calculate score on frontend
 - [ ] Display results metrics:
   - Score (e.g., 7/10)
@@ -76,7 +76,7 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
 - [ ] Add "Try Again" or "Select New Topic" buttons
 - [ ] Basic styling for results page
 
-### Step 1.9: Testing & Bug Fixes (Day 19-21)
+### Step 1.9: Testing & Bug Fixes
 - [ ] Test complete user flow end-to-end
 - [ ] Fix any bugs or issues
 - [ ] Improve UI/UX based on testing
@@ -91,7 +91,7 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
 **Goal:** Add user accounts and start tracking quiz attempts
 **Timeline Estimate:** 2-3 weeks
 
-### Step 2.1: Backend - User Authentication (Week 1)
+### Step 2.1: Backend - User Authentication 
 - [ ] Create User collection schema in Mongoose
 - [ ] Install authentication packages (bcrypt, jsonwebtoken)
 - [ ] Implement registration endpoint
@@ -103,7 +103,7 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
 - [ ] Create authentication middleware
 - [ ] Test authentication flow
 
-### Step 2.2: Frontend - Authentication UI (Week 1)
+### Step 2.2: Frontend - Authentication UI 
 - [ ] Create registration page
 - [ ] Create login page
 - [ ] Implement form validation
@@ -111,7 +111,7 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
 - [ ] Add protected routes
 - [ ] Add logout functionality
 
-### Step 2.3: UserAttempt Collection (Week 2)
+### Step 2.3: UserAttempt Collection 
 - [ ] Create UserAttempt collection schema
 - [ ] Implement API endpoint to save attempts
   - POST /api/attempts - Save quiz attempt
@@ -119,19 +119,19 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
   - userId, questionId, timeTaken, isCorrect, userAnswer, attemptedAt
 - [ ] Test attempt tracking
 
-### Step 2.4: Update Question Analytics (Week 2)
+### Step 2.4: Update Question Analytics 
 - [ ] Modify Question schema to include analytics fields:
   - totalAttempts, correctAttempts, uniqueUsers, totalTimeSpent, wrongAnswerDistribution
 - [ ] Create logic to update question analytics after each attempt
 - [ ] Test analytics updates
 
-### Step 2.5: Basic User Profile (Week 3)
+### Step 2.5: Basic User Profile 
 - [ ] Create user profile page
 - [ ] Display basic user information
 - [ ] Show recent quiz attempts
 - [ ] Add navigation to profile from header
 
-### Step 2.6: Testing & Integration (Week 3)
+### Step 2.6: Testing & Integration 
 - [ ] Test complete authenticated user flow
 - [ ] Verify attempt tracking accuracy
 - [ ] Fix bugs and improve UX
@@ -145,7 +145,7 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
 **Goal:** Provide users with insights into their performance
 **Timeline Estimate:** 2-3 weeks
 
-### Step 3.1: Backend - Analytics API (Week 1)
+### Step 3.1: Backend - Analytics API 
 - [ ] Create analytics calculation functions:
   - Overall accuracy
   - Average time per question
@@ -156,7 +156,7 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
   - GET /api/analytics/topic/:userId/:topicId - Topic-specific stats
 - [ ] Test analytics calculations
 
-### Step 3.2: Frontend - Dashboard Page (Week 1-2)
+### Step 3.2: Frontend - Dashboard Page
 - [ ] Create dashboard layout
 - [ ] Display key metrics:
   - Total quizzes taken
@@ -166,26 +166,26 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
 - [ ] Add visual charts (consider using recharts library)
 - [ ] Design cards for quick stats
 
-### Step 3.3: Subject & Topic Performance (Week 2)
+### Step 3.3: Subject & Topic Performance 
 - [ ] Display subject-wise breakdown (Mathematics, Computer, etc.)
 - [ ] Show topic-wise performance
 - [ ] Identify weak topics based on accuracy
 - [ ] Add visual indicators (color coding for strong/weak areas)
 
-### Step 3.4: Attempt History (Week 2)
+### Step 3.4: Attempt History 
 - [ ] Create attempt history page
 - [ ] Display list of all past quiz attempts
 - [ ] Show details: date, topic, score, time taken
 - [ ] Add filtering options (by date, topic, subject)
 - [ ] Implement pagination
 
-### Step 3.5: Review Past Attempts (Week 3)
+### Step 3.5: Review Past Attempts 
 - [ ] Allow users to view questions from past attempts
 - [ ] Show correct vs user's answer
 - [ ] Display whether answer was right or wrong
 - [ ] Add basic explanations placeholder
 
-### Step 3.6: Testing & Polish (Week 3)
+### Step 3.6: Testing & Polish 
 - [ ] Test all analytics features
 - [ ] Verify calculation accuracy
 - [ ] Improve data visualization
@@ -200,14 +200,14 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
 **Goal:** Implement diagnostic tests and personalized learning paths
 **Timeline Estimate:** 3-4 weeks
 
-### Step 4.1: Sample Quiz (Universal Starting Point) (Week 1)
+### Step 4.1: Sample Quiz (Universal Starting Point) 
 - [ ] Create special "sample quiz" functionality
 - [ ] Select 5 questions across all subjects
 - [ ] Implement sample quiz page for new users
 - [ ] Calculate performance score
 - [ ] Store sample quiz results
 
-### Step 4.2: Performance-Based Routing (Week 1)
+### Step 4.2: Performance-Based Routing 
 - [ ] Implement routing logic based on sample quiz score:
   - 0-1 correct → Guided onboarding
   - 2-3 correct → Comprehensive diagnostic
@@ -215,40 +215,40 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
 - [ ] Create route recommendation system
 - [ ] Test routing accuracy
 
-### Step 4.3: Guided Onboarding (Week 2)
+### Step 4.3: Guided Onboarding 
 - [ ] Create onboarding flow for beginners
 - [ ] Show study recommendations
 - [ ] Suggest starting with easy difficulty
 - [ ] Create topic recommendation algorithm
 - [ ] Test onboarding experience
 
-### Step 4.4: Comprehensive Diagnostic Test (Week 2)
+### Step 4.4: Comprehensive Diagnostic Test 
 - [ ] Generate 10-question diagnostic across all subjects
 - [ ] Implement diagnostic test page
 - [ ] Calculate subject-wise performance
 - [ ] Identify weak areas
 - [ ] Generate personalized study plan
 
-### Step 4.5: Targeted Diagnostic Test (Week 2)
+### Step 4.5: Targeted Diagnostic Test 
 - [ ] Generate 10-question diagnostic for weak subjects only
 - [ ] Focus on specific topics user struggled with
 - [ ] Provide detailed weakness analysis
 - [ ] Create practice recommendations
 
-### Step 4.6: Weakness Analysis & Recommendations (Week 3)
+### Step 4.6: Weakness Analysis & Recommendations 
 - [ ] Create weakness identification algorithm
 - [ ] Display weak topics with specific recommendations
 - [ ] Show "practice now" buttons for weak topics
 - [ ] Generate difficulty-based question sets
 - [ ] Add progress tracking for weak topics
 
-### Step 4.7: Difficulty Level Management (Week 3-4)
+### Step 4.7: Difficulty Level Management
 - [ ] Implement difficulty progression system
 - [ ] Start users with appropriate difficulty
 - [ ] Automatically adjust based on performance
 - [ ] Add manual difficulty selection option
 
-### Step 4.8: Testing & Refinement (Week 4)
+### Step 4.8: Testing & Refinement 
 - [ ] Test all assessment flows
 - [ ] Verify routing logic
 - [ ] Validate recommendation accuracy
@@ -263,35 +263,35 @@ Building an interactive quiz platform for NIMCET aspirants with topic-wise pract
 **Goal:** Add explanations, improve content, and polish the platform
 **Timeline Estimate:** 2-3 weeks
 
-### Step 5.1: Question Explanations (Week 1)
+### Step 5.1: Question Explanations 
 - [ ] Add explanation field to Question schema
 - [ ] Create explanation display UI
 - [ ] Add explanations for existing questions
 - [ ] Show explanations after quiz completion
 - [ ] Add "common mistakes" section
 
-### Step 5.2: Question Bank Expansion (Week 1-2)
+### Step 5.2: Question Bank Expansion
 - [ ] Prepare Excel sheet with comprehensive structure:
   - Que_id, Question, A, B, C, D, CorrectAns, topicId, difficultyLevel, source, type, explanation
 - [ ] Add 200-300 questions across all subjects
 - [ ] Create bulk import script for Excel data
 - [ ] Verify data integrity after import
 
-### Step 5.3: Admin Panel (Week 2)
+### Step 5.3: Admin Panel 
 - [ ] Create admin login system
 - [ ] Build CRUD interface for questions
 - [ ] Add topic management
 - [ ] Implement bulk upload feature
 - [ ] Add analytics dashboard for admins
 
-### Step 5.4: UI/UX Enhancement (Week 3)
+### Step 5.4: UI/UX Enhancement 
 - [ ] Improve overall design consistency
 - [ ] Add animations and transitions
 - [ ] Improve mobile responsiveness
 - [ ] Add loading skeletons
 - [ ] Enhance error messages
 
-### Step 5.5: Performance Optimization (Week 3)
+### Step 5.5: Performance Optimization 
 - [ ] Optimize database queries
 - [ ] Implement caching where appropriate
 - [ ] Reduce bundle size

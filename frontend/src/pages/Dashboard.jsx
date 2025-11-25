@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../components/Dashboard/Navbar.jsx";
-import WelcomeBanner from "../components/Dashboard/WelcomeBanner.jsx";
+import QuickStats from "../components/Dashboard/QuickStats.jsx";
+import ActionItems from "../components/Dashboard/ActionItems.jsx";
+import ProgressSection from "../components/Dashboard/ProgressSection.jsx";
 import AchievementsSection from "../components/Dashboard/AchievementsSection.jsx";
-import ModuleGrid from "../components/Dashboard/ModuleGrid.jsx";
-import ExploreButton from "../components/Dashboard/ExploreButton.jsx";
+import PracticeZones from "../components/Dashboard/PracticeZones.jsx";
 import QuizConfig from "../components/QuizConfig/QuizConfig.jsx";
-import "./Dashboard.css";
-import "../components/Dashboard/TopicSelection.css";
-
 import QuizInterface from "../components/Quiz/QuizInterface.jsx";
 import QuizResults from "../components/QuizResults/QuizResults.jsx";
 import QuizReview from "../components/Quiz/QuizReview.jsx";
+import { useAuth } from "../context/AuthContext";
+import "./DashboardRebuild.css";
+import "../components/Dashboard/TopicSelection.css";
 
 const Dashboard = () => {
+  const { currentUser } = useAuth();
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [availableTopics, setAvailableTopics] = useState([]);
   const [quizConfig, setQuizConfig] = useState(null);
@@ -20,6 +23,39 @@ const Dashboard = () => {
   const [quizResults, setQuizResults] = useState(null);
   const [isReviewing, setIsReviewing] = useState(false);
   const [loadingTopics, setLoadingTopics] = useState(false);
+  const [userStats, setUserStats] = useState(null);
+  const [loadingStats, setLoadingStats] = useState(true);
+  
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Fetch user stats to determine beginner state
+  useEffect(() => {
+    const fetchStats = async () => {
+      if (!currentUser) return;
+      try {
+        const response = await fetch(`/api/v1/analytics/user/${currentUser._id}`);
+        const data = await response.json();
+        if (data.success) {
+          setUserStats(data.data.overall);
+        }
+      } catch (error) {
+        console.error("Error fetching stats:", error);
+      } finally {
+        setLoadingStats(false);
+      }
+    };
+    fetchStats();
+  }, [currentUser]);
+
+  // Handle routing for practice topics
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const subject = params.get("subject");
+    if (subject) {
+      handleLaunchQuiz(subject);
+    }
+  }, [location.search]);
 
   const handleLaunchQuiz = async (subject) => {
     setSelectedSubject(subject);
@@ -39,7 +75,8 @@ const Dashboard = () => {
 
   const handleTopicSelect = (topic) => {
     setQuizConfig({ topic });
-    setSelectedSubject(null); // Close subject selection
+    setSelectedSubject(null);
+    navigate("/dashboard", { replace: true });
   };
 
   const handleCloseConfig = () => {
@@ -60,21 +97,12 @@ const Dashboard = () => {
   const handleQuizComplete = (results) => {
     setQuizSettings(null);
     setQuizResults(results);
+    // Refresh stats after quiz
+    // In a real app, we'd refetch or update context
   };
 
   const handleReview = () => {
     setIsReviewing(true);
-  };
-
-  const handleExitReview = () => {
-    setIsReviewing(false);
-    // Optionally keep results open or go back to dashboard
-    // For now, let's go back to results page? Or dashboard?
-    // Usually review closes back to results or dashboard. 
-    // Let's close to dashboard for now as per "Finish Review" button text implies done.
-    // Or better, toggle isReviewing false to go back to Results page?
-    // The user flow usually is Results -> Review -> Results (or Dashboard).
-    // Let's make "Finish Review" go back to Results.
   };
 
   const handleMoreQuestions = () => {
@@ -82,51 +110,68 @@ const Dashboard = () => {
     setIsReviewing(false);
   };
 
+  // Determine if user is a beginner (no quizzes taken)
+  const isBeginner = !userStats || userStats.totalQuestionsAttempted === 0;
+
+  // Quiz Interface Views
   if (quizSettings) {
-    return (
-      <QuizInterface
-        settings={quizSettings}
-        onExit={handleExitQuiz}
-        onComplete={handleQuizComplete}
-      />
-    );
+    return <QuizInterface settings={quizSettings} onExit={handleExitQuiz} onComplete={handleQuizComplete} />;
   }
 
   if (isReviewing && quizResults) {
-      return (
-          <QuizReview 
-            questions={quizResults.questions}
-            userAnswers={quizResults.userAnswers}
-            onExit={() => setIsReviewing(false)}
-          />
-      );
+    return <QuizReview questions={quizResults.questions} userAnswers={quizResults.userAnswers} onExit={() => setIsReviewing(false)} />;
   }
 
   if (quizResults) {
-    return (
-      <QuizResults
-        {...quizResults}
-        onReview={handleReview}
-        onMoreQuestions={handleMoreQuestions}
-      />
-    );
+    return <QuizResults {...quizResults} onReview={handleReview} onMoreQuestions={handleMoreQuestions} />;
   }
 
   return (
     <div className="dashboard-container">
       <Navbar />
-      <WelcomeBanner />
-      <AchievementsSection />
-      <ModuleGrid onLaunchQuiz={handleLaunchQuiz} />
-      <ExploreButton />
       
+      <div className="dashboard-content">
+        {/* Welcome Section */}
+        <div className="welcome-section">
+          <h1>Welcome back, {currentUser?.fullName?.split(" ")[0] || "Student"}!</h1>
+          <p>{isBeginner ? "Ready to start your learning journey?" : "Keep up the momentum! You're doing great."}</p>
+        </div>
+
+        {/* Quick Stats */}
+        <QuickStats stats={{
+          totalQuizzes: userStats?.totalQuizzes || 0, // Assuming backend provides this or we derive it
+          accuracy: userStats?.overallAccuracy ? parseFloat(userStats.overallAccuracy).toFixed(1) : 0,
+          avgSpeed: userStats?.averageTimePerQuestion ? parseFloat(userStats.averageTimePerQuestion).toFixed(1) : 0,
+          strongestArea: "Calculating..." // Placeholder until backend provides this specific metric
+        }} isBeginner={isBeginner} />
+
+        {/* Action Items */}
+        <ActionItems 
+          isBeginner={isBeginner} 
+          onStartQuiz={() => handleLaunchQuiz("Mathematics")} // Default to Math for "Start Quiz"
+          onReview={() => navigate("/analytics")} // Redirect to analytics for review for now
+        />
+
+        {/* Progress & Achievements Grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "1.5rem" }}>
+          <ProgressSection progress={{}} isBeginner={isBeginner} />
+          <AchievementsSection isBeginner={isBeginner} />
+        </div>
+
+        {/* Practice Zones */}
+        <PracticeZones onSelectSubject={handleLaunchQuiz} />
+      </div>
+
       {/* Topic Selection Modal */}
       {selectedSubject && (
         <div className="modal-backdrop">
           <div className="modal-container">
             <div className="modal-header">
               <h2>Select a Topic in {selectedSubject}</h2>
-              <button onClick={() => setSelectedSubject(null)} className="close-button">×</button>
+              <button onClick={() => {
+                setSelectedSubject(null);
+                navigate("/dashboard", { replace: true });
+              }} className="close-button">×</button>
             </div>
             <div className="topic-list">
               {loadingTopics ? (

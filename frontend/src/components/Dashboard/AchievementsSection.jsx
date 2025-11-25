@@ -1,66 +1,25 @@
 import React from "react";
-import {
-  FaTrophy,
-  FaLightbulb,
-  FaLaptopCode,
-  FaLanguage,
-  FaStar,
-} from "react-icons/fa";
 
-const AchievementsSection = () => {
-  const badges = [
-    {
-      id: "first-quiz",
-      icon: <FaTrophy />,
-      label: "First Quiz Completed",
-      color: "#a78bfa",
-      borderColor: "#4c1d95",
-    },
-    {
-      id: "logical-master",
-      icon: <FaLightbulb />,
-      label: "Logical Master",
-      color: "#22d3ee",
-      borderColor: "#164e63",
-    },
-    {
-      id: "computer-pro",
-      icon: <FaLaptopCode />,
-      label: "Computer Pro",
-      color: "#c084fc",
-      borderColor: "#4c1d95",
-    },
-    {
-      id: "vocabulary-champ",
-      icon: <FaLanguage />,
-      label: "Vocabulary Champ",
-      color: "#fbbf24",
-      borderColor: "#78350f",
-    },
-    {
-      id: "consistency-star",
-      icon: <FaStar />,
-      label: "Consistency Star",
-      color: "#34d399",
-      borderColor: "#065f46",
-    },
+const AchievementsSection = ({ isBeginner }) => {
+  const achievements = [
+    { icon: "🚀", title: "First Steps", unlocked: !isBeginner },
+    { icon: "🔥", title: "On Fire", unlocked: false },
+    { icon: "🎯", title: "Sharpshooter", unlocked: false },
+    { icon: "📚", title: "Scholar", unlocked: false },
+    { icon: "⚡", title: "Speedster", unlocked: false },
   ];
 
   return (
     <div className="achievements-section">
-      <h2>Star Chart Discoveries</h2>
-      <div className="badges-container">
-        {badges.map((badge) => (
-          <div
-            key={badge.id}
-            className="badge"
-            style={{
-              "--border-color": badge.borderColor,
-              "--icon-color": badge.color,
-            }}
+      <h2 className="section-title" style={{ marginBottom: "1rem" }}>Achievements</h2>
+      <div className="achievements-grid">
+        {achievements.map((ach, index) => (
+          <div 
+            key={index} 
+            className={`achievement-badge ${ach.unlocked ? "" : "locked"}`}
+            title={ach.title}
           >
-            <div className="badge-icon">{badge.icon}</div>
-            <span>{badge.label}</span>
+            {ach.icon}
           </div>
         ))}
       </div>
